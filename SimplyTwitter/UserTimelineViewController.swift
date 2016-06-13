@@ -9,16 +9,19 @@
 import UIKit
 import TwitterKit
 
-class UserTimelineViewController: TWTRTimelineViewController {
-
+class UserTimelineViewController: TWTRTimelineViewController
+{
+    private let store = Twitter.sharedInstance().sessionStore
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let store = Twitter.sharedInstance().sessionStore
-        let userID = store.session()?.userID
-
         let client = TWTRAPIClient()
-        self.dataSource = TWTRUserTimelineDataSource(screenName: nil, userID: userID, APIClient: client, maxTweetsPerRequest: 20, includeReplies: true, includeRetweets: true)
+        self.dataSource = TWTRUserTimelineDataSource(screenName: nil, userID: store.session()?.userID, APIClient: client, maxTweetsPerRequest: 20, includeReplies: true, includeRetweets: true)
     }
 
+    @IBAction func logOutUser(sender: UIButton) {
+        store.logOutUserID((store.session()?.userID)!)
+        
+    }
 }

@@ -30,6 +30,7 @@ class LogInViewController: UIViewController
         let logInButton = TWTRLogInButton(logInCompletion: { session, error in
             if (session != nil) {
                 print("signed in as \(session!.userName)");
+                self.presentUserTimelineVC()
             } else {
                 print("error: \(error!.localizedDescription)");
             }

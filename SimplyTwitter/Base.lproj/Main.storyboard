@@ -41,11 +41,21 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOr-zI-DVL">
+                                    <rect key="frame" x="524" y="92" width="56" height="33"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                    <state key="normal" title="Log Out"/>
+                                    <connections>
+                                        <action selector="logOutUser:" destination="Hs3-iW-eah" eventType="touchUpInside" id="PXw-md-LZh"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="bK3-kA-Dgg" firstAttribute="centerY" secondItem="aoa-TO-Sh1" secondAttribute="centerY" id="5AS-hA-eJg"/>
                                 <constraint firstItem="bK3-kA-Dgg" firstAttribute="centerX" secondItem="aoa-TO-Sh1" secondAttribute="centerX" id="9bZ-2s-zBr"/>
+                                <constraint firstAttribute="bottom" secondItem="QOr-zI-DVL" secondAttribute="bottom" id="Q5b-PI-t8S"/>
+                                <constraint firstAttribute="trailing" secondItem="QOr-zI-DVL" secondAttribute="trailing" constant="20" symbolic="YES" id="qfg-Wa-SxB"/>
                             </constraints>
                         </view>
                         <prototypes>
