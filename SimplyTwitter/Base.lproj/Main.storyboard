@@ -21,36 +21,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="638" y="583"/>
         </scene>
         <!--User Timeline View Controller-->
-        <scene sceneID="hN2-Nm-b0T">
+        <scene sceneID="ZLi-2T-Nka">
             <objects>
-                <viewController id="qE7-VL-XdS" customClass="UserTimelineViewController" customModule="SimplyTwitter" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2Jj-f2-g8i"/>
-                        <viewControllerLayoutGuide type="bottom" id="Jug-Ce-gNz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ton-0V-Cic">
+                <tableViewController id="Hs3-iW-eah" customClass="UserTimelineViewController" customModule="SimplyTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6xK-Jh-3Ii">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOk-Ec-wTj" userLabel="timeline view" customClass="UITableView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="XOk-Ec-wTj" firstAttribute="bottom" secondItem="Jug-Ce-gNz" secondAttribute="top" id="1l8-iA-YR0"/>
-                            <constraint firstItem="XOk-Ec-wTj" firstAttribute="leading" secondItem="ton-0V-Cic" secondAttribute="leading" id="OqD-I4-tDg"/>
-                            <constraint firstItem="XOk-Ec-wTj" firstAttribute="top" secondItem="ton-0V-Cic" secondAttribute="top" id="XzQ-Kc-C36"/>
-                            <constraint firstAttribute="trailing" secondItem="XOk-Ec-wTj" secondAttribute="trailing" id="pqv-uD-tIn"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="48F-8g-p2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="aoa-TO-Sh1" userLabel="HeaderView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Twitter. Your timeline." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-kA-Dgg">
+                                    <rect key="frame" x="159" y="46" width="283" height="33"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="bK3-kA-Dgg" firstAttribute="centerY" secondItem="aoa-TO-Sh1" secondAttribute="centerY" id="5AS-hA-eJg"/>
+                                <constraint firstItem="bK3-kA-Dgg" firstAttribute="centerX" secondItem="aoa-TO-Sh1" secondAttribute="centerX" id="9bZ-2s-zBr"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U3p-eG-52u">
+                                <rect key="frame" x="0.0" y="153" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3p-eG-52u" id="xFn-aT-WIf">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hs3-iW-eah" id="jGP-QL-RVS"/>
+                            <outlet property="delegate" destination="Hs3-iW-eah" id="q89-hi-cS6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tjI-Pf-ZRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1471" y="583"/>
+            <point key="canvasLocation" x="638" y="1298"/>
         </scene>
     </scenes>
 </document>

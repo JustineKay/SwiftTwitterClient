@@ -22,5 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        if Twitter.sharedInstance().application(app, openURL: url, options: options) {
+            return true
+        }
+        return false
+    }
 }
 

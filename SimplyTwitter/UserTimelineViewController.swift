@@ -13,9 +13,12 @@ class UserTimelineViewController: TWTRTimelineViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let store = Twitter.sharedInstance().sessionStore
+        let userID = store.session()?.userID
 
         let client = TWTRAPIClient()
-        self.dataSource = TWTRUserTimelineDataSource(screenName: "", APIClient: client)
+        self.dataSource = TWTRUserTimelineDataSource(screenName: userID!, APIClient: client)
     }
 
 }

@@ -9,31 +9,31 @@
 import UIKit
 import TwitterKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController
+{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logInButton = TWTRLogInButton { (session, error) in
-            if let unwrappedSession = session {
-                let alert = UIAlertController(title: "Logged In",
-                    message: "User \(unwrappedSession.userName) has logged in",
-                    preferredStyle: UIAlertControllerStyle.Alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                NSLog("Login error: %@", error!.localizedDescription);
-            }
+        
+        let store = Twitter.sharedInstance().sessionStore
+        let userID = store.session()?.userID
+        
+        if userID != nil {
+            store.logOutUserID(userID!)
+            let logInButton = TWTRLogInButton(logInCompletion: { session, error in
+                if (session != nil) {
+                    print("signed in as \(session!.userName)");
+                } else {
+                    print("error: \(error!.localizedDescription)");
+                }
+            })
+            logInButton.center = self.view.center
+            self.view.addSubview(logInButton)
+            
+        } else {
+            
+            //TODO: segue to UserTimelineVC
         }
-        
-        // TODO: Change where the log in button is positioned
-        logInButton.center = self.view.center
-        self.view.addSubview(logInButton)
-
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
     }
 }
 
