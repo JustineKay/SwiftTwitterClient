@@ -18,7 +18,7 @@ class UserTimelineViewController: TWTRTimelineViewController {
         let userID = store.session()?.userID
 
         let client = TWTRAPIClient()
-        self.dataSource = TWTRUserTimelineDataSource(screenName: userID!, APIClient: client)
+        self.dataSource = TWTRUserTimelineDataSource(screenName: nil, userID: userID, APIClient: client, maxTweetsPerRequest: 20, includeReplies: true, includeRetweets: true)
     }
 
 }

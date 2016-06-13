@@ -18,22 +18,30 @@ class LogInViewController: UIViewController
         let store = Twitter.sharedInstance().sessionStore
         let userID = store.session()?.userID
         
-        if userID != nil {
-            store.logOutUserID(userID!)
-            let logInButton = TWTRLogInButton(logInCompletion: { session, error in
-                if (session != nil) {
-                    print("signed in as \(session!.userName)");
-                } else {
-                    print("error: \(error!.localizedDescription)");
-                }
-            })
-            logInButton.center = self.view.center
-            self.view.addSubview(logInButton)
-            
+        if userID == nil {
+            showLogInButton()
         } else {
-            
-            //TODO: segue to UserTimelineVC
+            presentUserTimelineVC()
         }
+    }
+    
+    func showLogInButton()
+    {
+        let logInButton = TWTRLogInButton(logInCompletion: { session, error in
+            if (session != nil) {
+                print("signed in as \(session!.userName)");
+            } else {
+                print("error: \(error!.localizedDescription)");
+            }
+        })
+        logInButton.center = self.view.center
+        self.view.addSubview(logInButton)
+    }
+    
+    func presentUserTimelineVC()
+    {
+        let timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("UserTimelineVC")
+        self.presentViewController(timelineVC!, animated: true, completion: nil)
     }
 }
 

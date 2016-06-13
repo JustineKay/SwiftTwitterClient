@@ -20,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Twitter.self])
         
+        let store = Twitter.sharedInstance().sessionStore
+        let userID = store.session()?.userID
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if userID == nil {
+            storyboard.instantiateViewControllerWithIdentifier("UserTimelineVC")
+        } else {
+            storyboard.instantiateViewControllerWithIdentifier("LogInVC")
+        }
+        
         return true
     }
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
