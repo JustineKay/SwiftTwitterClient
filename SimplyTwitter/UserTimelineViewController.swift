@@ -21,7 +21,14 @@ class UserTimelineViewController: TWTRTimelineViewController
     }
 
     @IBAction func logOutUser(sender: UIButton) {
-        store.logOutUserID((store.session()?.userID)!)
-        
+        self.store.logOutUserID((self.store.session()?.userID)!)
+        self.store
+        presentLogInVC()
+    }
+    
+    func presentLogInVC()
+    {
+        let logInVC = self.storyboard?.instantiateViewControllerWithIdentifier("LogInVC")
+        self.presentViewController(logInVC!, animated: true, completion: nil)
     }
 }

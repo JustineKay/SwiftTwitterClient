@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
-        Fabric.with([Twitter.self])
+        Fabric.with([Twitter.self()])
         
         return true
     }
@@ -28,10 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userID = store.session()?.userID
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        if userID == nil {
-            storyboard.instantiateViewControllerWithIdentifier("UserTimelineVC")
+        if userID != nil {
+            let initialVC = storyboard.instantiateViewControllerWithIdentifier("UserTimelineVC")
+            self.window?.rootViewController = initialVC
+            self.window?.makeKeyAndVisible()
         } else {
-            storyboard.instantiateViewControllerWithIdentifier("LogInVC")
+            let initialVC = storyboard.instantiateViewControllerWithIdentifier("LogInVC")
+            self.window?.rootViewController = initialVC
+            self.window?.makeKeyAndVisible()
         }
         
         return true
