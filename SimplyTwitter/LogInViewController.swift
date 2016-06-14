@@ -12,20 +12,13 @@ import TwitterKit
 class LogInViewController: UIViewController
 {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        
-        let store = Twitter.sharedInstance().sessionStore
-        let userID = store.session()?.userID
-        
-        if userID == nil {
-            showLogInButton()
-        } else {
-            presentUserTimelineVC()
-        }
+        showLogInButton()
     }
     
-    func showLogInButton()
+    private func showLogInButton()
     {
         let logInButton = TWTRLogInButton(logInCompletion: { session, error in
             if (session != nil) {
@@ -39,7 +32,7 @@ class LogInViewController: UIViewController
         self.view.addSubview(logInButton)
     }
     
-    func presentUserTimelineVC()
+    private func presentUserTimelineVC()
     {
         let timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("UserTimelineVC")
         self.presentViewController(timelineVC!, animated: true, completion: nil)

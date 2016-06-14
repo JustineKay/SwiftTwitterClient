@@ -15,15 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool
+    {
         Fabric.with([Twitter.self()])
         
         return true
     }
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
         let store = Twitter.sharedInstance().sessionStore
         let userID = store.session()?.userID
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -40,7 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool
+    {
         if Twitter.sharedInstance().application(app, openURL: url, options: options) {
             return true
         }
