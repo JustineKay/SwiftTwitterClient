@@ -16,8 +16,14 @@ class UserTimelineViewController: TWTRTimelineViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadUserTimeline()
+    }
+    
+    private func loadUserTimeline()
+    {
         let client = TWTRAPIClient()
         self.dataSource = TWTRUserTimelineDataSource(screenName: nil, userID: store.session()?.userID, APIClient: client, maxTweetsPerRequest: 20, includeReplies: true, includeRetweets: true)
+        self.showTweetActions = true
     }
 
     @IBAction func logOutUser(sender: UIButton) {
@@ -26,7 +32,7 @@ class UserTimelineViewController: TWTRTimelineViewController
         presentLogInVC()
     }
     
-    func presentLogInVC()
+    private func presentLogInVC()
     {
         let logInVC = self.storyboard?.instantiateViewControllerWithIdentifier("LogInVC")
         self.presentViewController(logInVC!, animated: true, completion: nil)
