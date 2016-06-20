@@ -13,7 +13,8 @@ class UserTimelineViewController: TWTRTimelineViewController
 {
     private let store = Twitter.sharedInstance().sessionStore
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         loadUserTimeline()
@@ -22,13 +23,18 @@ class UserTimelineViewController: TWTRTimelineViewController
     private func loadUserTimeline()
     {
         let client = TWTRAPIClient()
-        self.dataSource = TWTRUserTimelineDataSource(screenName: nil, userID: store.session()?.userID, APIClient: client, maxTweetsPerRequest: 20, includeReplies: true, includeRetweets: true)
+        self.dataSource = TWTRUserTimelineDataSource(screenName: nil,
+                                                     userID: store.session()?.userID,
+                                                     APIClient: client,
+                                                     maxTweetsPerRequest: 20,
+                                                     includeReplies: true,
+                                                     includeRetweets: true)
         self.showTweetActions = true
     }
 
-    @IBAction func logOutUser(sender: UIButton) {
+    @IBAction func logOutUser(sender: UIButton)
+    {
         self.store.logOutUserID((self.store.session()?.userID)!)
-        self.store
         presentLogInVC()
     }
     
